@@ -15,7 +15,7 @@ pipeline {
                 script{
                     currentBuild.displayName = VER
                 }
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'satishgitcicdpipe', url: 'https://github.com/RamanjiReddyvempalli/ECS.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'satishjenkinscicdpipe', url: 'https://github.com/RamanjiReddyvempalli/ECS.git']]])
             }    
         }//end SCM
 
@@ -24,7 +24,7 @@ pipeline {
                     sh """
                         pwd
                         ls
-                        sudo docker login -u ram1993 -p Devops@123
+                        sudo docker login -u satishrajucdocker -p Devops@123456
                         sudo docker build -t $dockerRegistry/$imageName:$VER  --pull .
                         sudo docker push $dockerRegistry/$imageName:$VER
                     """         
